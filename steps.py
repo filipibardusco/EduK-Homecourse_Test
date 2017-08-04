@@ -8,8 +8,8 @@ def impl(context):
 def impl(context):
     username_field = context.browser.find_by_id('session_email')
     password_field = context.browser.find_by_id('session_password')
-    username_field.send_keys('')
-    password_field.send_keys('')
+    username_field.send_keys('eduk001@bardusco.com')
+    password_field.send_keys('123456')
 
 @then(u'we click submit')
 def impl(context):
@@ -44,3 +44,10 @@ def step_impl(context):
 @then(u'we should see "a video"')
 def step_impl(context):
     video = context.browser.find_by_xpath('//*[@id="appRoot"]/div/div/div[2]/div[1]/section/iframe')
+
+@given(u'we make a search')
+def step_impl(context):
+    search_box = context.browser.find_by_class('header_search-input')
+    search_box.send_keys('batatas')
+    submit_search = context.browser.find_by_xpath('//*[@id="appRoot"]/div/div/div/header/div[1]/div[1]/form/button')
+    submit_search.click()

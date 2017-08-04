@@ -12,9 +12,15 @@ Feature: test eduK's home course
 	Scenario Outline: course check
 		When we click on the "<specific content>"
 		Then we should see "<subcontent>"
-		
+
 		Examples:
 			|specific content |subcontent |
 			|gastronomia page |courses    |
 			|random course    |lessons    |
 			|random lesson    |a video    |
+
+	Scenario: test search function
+		Given we make a search
+		When we click on the "random course"
+		And we click on the "random lesson"
+		Then we should see "a video"
